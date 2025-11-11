@@ -509,4 +509,181 @@ footer {
 
 .social-icons a:hover {
     color: #CC0000;
+}/* ========================================= */
+/* 3. Media Queries for Responsiveness 📱💻 */
+/* ========================================= */
+
+@media (max-width: 1024px) {
+    /* Adjustments for medium screens (laptops/large tablets) */
+
+    .nav-container,
+    .hero-main,
+    .newswire-container,
+    .footer-container {
+        max-width: 960px; /* Constrain content slightly more */
+    }
+
+    .gta-title {
+        font-size: 8vw; /* Increase the title size slightly on medium screens */
+    }
+    .gta-title-vi {
+        font-size: 10vw;
+    }
+
+    .main-links ul li a {
+        padding: 10px 10px; /* Less padding for navigation links */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Adjustments for small screens (tablets and mobiles) */
+
+    /* --- Navigation Bar Adjustments --- */
+    .nav-container {
+        flex-direction: column; /* Stack the main links below the logo/actions */
+        padding: 10px 10px;
+    }
+
+    .nav-actions {
+        order: -1; /* Move actions group to the top right */
+        margin-left: auto;
+        padding-bottom: 5px;
+    }
+
+    .main-links {
+        width: 100%; /* Full width for the links wrapper */
+        order: 1; /* Move links below the logo */
+    }
+
+    .main-links ul {
+        justify-content: space-around; /* Spread links out */
+    }
+
+    .main-links ul li a {
+        font-size: 13px;
+        padding: 10px 5px;
+    }
+
+    /* --- Main Hero Section Adjustments --- */
+    .hero-content-area {
+        flex-direction: column; /* Stack the poster and ad block vertically */
+    }
+
+    .hero-poster {
+        flex: auto;
+        min-height: 400px; /* Reduce minimum height on small screens */
+    }
+
+    .gta-title {
+        font-size: 12vw; /* Make the title larger when stacked */
+    }
+    .gta-title-vi {
+        font-size: 15vw;
+    }
+
+    .poster-overlay-text {
+        padding: 15px 20px;
+    }
+    
+    .release-date {
+        font-size: 14px;
+    }
+
+    .hero-ad-block {
+        flex: auto;
+        padding: 20px;
+    }
+
+    /* --- Newswire Section Adjustments --- */
+    .newswire-container {
+        flex-direction: column; /* Stack news cards vertically */
+        gap: 20px; /* Reduce gap */
+    }
+
+    .news-card {
+        flex: auto; /* Take full width */
+    }
+    
+    /* Slightly adjust card content padding to fit better */
+    .card-content {
+        padding: 10px 0 15px 0;
+    }
+    
+    .card-title {
+        font-size: 18px;
+    }
+
+    /* --- Subscription Area Adjustments --- */
+    .pattern-overlay {
+        padding: 40px 10px; /* Reduce padding */
+    }
+    
+    .subscribe-content h2 {
+        font-size: 26px;
+    }
+
+    /* --- Footer Adjustments --- */
+    .footer-links-top {
+        flex-direction: column; /* Stack top footer links */
+        align-items: flex-start;
+    }
+    
+    .links-group {
+        margin-bottom: 15px; /* Add space between stacked link groups */
+    }
+
+    .links-group a {
+        margin-right: 15px;
+        margin-bottom: 10px;
+        display: inline-block; /* Helps with spacing on wrap */
+    }
+
+    .language-selector {
+        margin-left: 0;
+    }
+
+    .footer-bottom {
+        flex-direction: column; /* Stack legal links and social icons */
+        align-items: flex-start;
+    }
+
+    .legal-links {
+        margin-bottom: 10px;
+    }
+
+    .social-icons {
+        margin-top: 5px;
+    }
+
+    .social-icons a:first-child {
+        margin-left: 0; /* Remove left margin on the first social icon */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjustments for extra small screens (phones) */
+    
+    /* Hide some navigation links to save space */
+    .main-links ul li:nth-child(n+4) { 
+        display: none; /* Hide 4th link and beyond (e.g., CAREERS, SUPPORT) */
+    }
+    
+    .rockstar-logo {
+        padding-right: 10px;
+    }
+
+    .gta-title {
+        font-size: 14vw;
+    }
+    .gta-title-vi {
+        font-size: 18vw;
+    }
+
+    .poster-overlay-text {
+        padding: 10px 15px;
+    }
+    
+    .release-date {
+        font-size: 12px;
+    }
 }

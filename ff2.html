@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rockstar Games Launcher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000000;
+            color: white;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffa500;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffa500;
+        }
+
+        .get-launcher-btn {
+            background: transparent;
+            border: 2px solid white;
+            padding: 10px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .get-launcher-btn:hover {
+            background: white;
+            color: black;
+        }
+
+        .hero {
+            margin-top: 100px;
+            padding: 80px 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: #ccc;
+        }
+
+        .download-btn {
+            background: #ffa500;
+            color: black;
+            border: none;
+            padding: 18px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            background: #ff8c00;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 165, 0, 0.4);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+        }
+
+        .feature-text {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .hero-visual {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-showcase {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 50%, #6c5b7b 100%);
+            padding: 60px;
+            border-radius: 12px;
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gta-logo {
+            font-size: 64px;
+            font-weight: 900;
+            text-align: center;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .play-button {
+            background: white;
+            color: black;
+            padding: 15px 60px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s;
+        }
+
+        .play-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .library-panel {
+            background: black;
+            border-radius: 12px;
+            padding: 30px;
+            position: absolute;
+            left: -20px;
+            top: 20px;
+            width: 320px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .library-section {
+            margin-bottom: 25px;
+        }
+
+        .library-section h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .game-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            transition: background 0.3s;
+            margin-bottom: 8px;
+        }
+
+        .game-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .game-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .game-title {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .promo-banner {
+            background: linear-gradient(90deg, #ffa500 0%, #ff6b00 100%);
+            padding: 20px 60px;
+            margin-top: -40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .promo-banner strong {
+            color: black;
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            
+            .library-panel {
+                position: relative;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">R★</div>
+        <nav>
+            <a href="#">GAMES</a>
+            <a href="#">NEWSWIRE</a>
+            <a href="#">VIDEOS</a>
+            <a href="#">DOWNLOADS</a>
+            <a href="#">STORE</a>
+            <a href="#">SUPPORT</a>
+            <button class="get-launcher-btn">Get Launcher</button>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <div class="hero-content">
+            <h1>Rockstar Games<br>Launcher</h1>
+            <p>Download and play the latest Rockstar Games PC titles</p>
+            <button class="download-btn">Download for Windows</button>
+            
+            <div class="features">
+                <div class="feature-item">
+                    <div class="feature-icon">▶</div>
+                    <div class="feature-text">Play<br>Games</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">☁</div>
+                    <div class="feature-text">Cloud<br>Saves</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🛒</div>
+                    <div class="feature-text">Shop The<br>Collection</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⬇</div>
+                    <div class="feature-text">Automatic<br>Updates</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="library-panel">
+                <div class="library-section">
+                    <h3>Now available</h3>
+                    <div class="game-item">
+                        <div class="game-icon">RDR</div>
+                        <div class="game-title">Red Dead Redemption</div>
+                    </div>
+                </div>
+                
+                <div class="library-section">
+                    <h3>My library</h3>
+                    <div class="game-item">
+                        <div class="game-icon">V</div>
+                        <div class="game-title">Grand Theft Auto V Enhanced</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-icon">SA</div>
+                        <div class="game-title">Grand Theft Auto: San Andreas</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-icon">VC</div>
+                        <div class="game-title">Grand Theft Auto: Vice City</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-icon">III</div>
+                        <div class="game-title">Grand Theft Auto III</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-showcase">
+                <div style="text-align: center;">
+                    <div class="gta-logo">Grand<br>Theft<br>Auto V</div>
+                    <button class="play-button">PLAY</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="promo-banner">
+        <strong>Grand Theft Auto V Enhanced</strong> is available now on the Rockstar Games Launcher.
+    </div>
+</body>
+</html>
